@@ -1,0 +1,9 @@
+data/
+results/
+models/
+__pycache__/
+*.pyc
+*.pkl
+*.pkl.bz2
+*.bz2
+*.gz
