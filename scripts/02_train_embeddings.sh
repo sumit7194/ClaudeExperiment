@@ -65,11 +65,11 @@ train_year() {
             "$DUMPDB" "$DICT" "$MODEL" \
             --link-graph "$LINK_GRAPH" \
             --mention-db "$MENTION_DB" \
-            --dim-size 200 \
-            --window 5 \
-            --iteration 5 \
-            --negative 5 \
-            --pool-size 2
+            --dim-size 300 \
+            --window 10 \
+            --iteration 10 \
+            --negative 15 \
+            --pool-size 1
         mark_done "model_${YEAR}" "Size: $(du -h "$MODEL" | cut -f1)"
     fi
 
