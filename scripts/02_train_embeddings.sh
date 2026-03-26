@@ -69,7 +69,7 @@ train_year() {
             --window 10 \
             --iteration 10 \
             --negative 15 \
-            --pool-size 1
+            --pool-size 6
         mark_done "model_${YEAR}" "Size: $(du -h "$MODEL" | cut -f1)"
     fi
 
