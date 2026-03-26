@@ -62,7 +62,9 @@ train_year() {
     else
         echo "--- Training embeddings for $YEAR (this takes hours) ---"
         time wikipedia2vec train-embedding \
-            "$DUMPDB" "$DICT" "$LINK_GRAPH" "$MENTION_DB" "$MODEL" \
+            "$DUMPDB" "$DICT" "$MODEL" \
+            --link-graph "$LINK_GRAPH" \
+            --mention-db "$MENTION_DB" \
             --dim-size 300 \
             --window 10 \
             --iteration 10 \
