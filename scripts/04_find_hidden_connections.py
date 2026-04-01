@@ -32,15 +32,27 @@ ANALYSIS = EXPERIMENT_CONFIG['analysis']
 # Link set helpers
 # ---------------------------------------------------------------------------
 
+def _pair_hash(a, b):
+    """Order-independent hash for a pair of strings."""
+    if a > b:
+        a, b = b, a
+    return hash((a, b))
+
+
 def load_link_set(links_path):
-    """Load link graph as a set of (source, target) pairs (both directions)."""
+    """Load link graph as a set of integer hashes (memory-efficient).
+
+    Instead of storing millions of (string, string) tuples (~80 GB for 2025),
+    we store a single int per pair (~2 GB). The are_linked() function hashes
+    the query pair the same way to check membership.
+    """
     with open(links_path) as f:
         link_dict = json.load(f)
     link_set = set()
     for source, targets in link_dict.items():
+        s = source.lower()
         for target in targets:
-            link_set.add((source.lower(), target.lower()))
-            link_set.add((target.lower(), source.lower()))
+            link_set.add(_pair_hash(s, target.lower()))
     return link_set
 
 
@@ -48,7 +60,7 @@ def are_linked(entity_a, entity_b, link_set):
     """Check if two entities are linked (either direction)."""
     a = entity_a.title.lower()
     b = entity_b.title.lower()
-    return (a, b) in link_set or (b, a) in link_set
+    return _pair_hash(a, b) in link_set
 
 
 # ---------------------------------------------------------------------------
