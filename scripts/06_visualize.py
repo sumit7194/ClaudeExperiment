@@ -356,8 +356,12 @@ def main():
         print("No validation results found. Run step 5 first.")
         return
 
-    validation = load_json(validation_path)
+    validation = load_json(validation_path)  # list of candidate dicts
     candidates = load_json(candidates_path)
+
+    # Load significance results for random baseline
+    sig_path = f"{RESULTS_DIR}/significance_results.json"
+    sig_results = load_json(sig_path) if os.path.exists(sig_path) else {}
 
     # ── Confidence Ladder ──
     print("\n--- Creating confidence ladder ---")
@@ -370,7 +374,7 @@ def main():
             for target in targets:
                 links_2025.add(_pair_hash(s, target.lower()))
 
-    random_baseline = validation.get('random_baseline_precision', 0.001)
+    random_baseline = sig_results.get('random_mean', 0.001)
     create_confidence_ladder(candidates, links_2025, random_baseline,
                              f"{RESULTS_DIR}/confidence_ladder.png")
 
@@ -379,15 +383,15 @@ def main():
 
     # ── Threshold Curve ──
     print("\n--- Creating threshold curve ---")
-    threshold_results = validation.get('multi_threshold', [])
+    threshold_path = f"{RESULTS_DIR}/threshold_analysis.json"
+    threshold_results = load_json(threshold_path) if os.path.exists(threshold_path) else []
     if threshold_results:
         create_threshold_curve(threshold_results, random_baseline,
                                 f"{RESULTS_DIR}/threshold_curve.png")
 
     # ── Blog Examples ──
     print("\n--- Selecting blog-worthy examples ---")
-    confirmed = validation.get('confirmed_pairs',
-                                [c for c in candidates if c.get('confirmed', False)])
+    confirmed = [c for c in validation if c.get('linked_2025') or c.get('prediction_correct')]
     if confirmed:
         generate_blog_examples(confirmed)
 
@@ -410,7 +414,7 @@ def main():
             research_trend_report(future, entity_clusters, cluster_names)
 
         print("\n--- Generating Wikipedia suggestions ---")
-        val_precision = validation.get('overall_precision', 0.1)
+        val_precision = sig_results.get('embedding_precision', 0.025)
         generate_wikipedia_suggestions(future, val_precision)
 
     log_memory("end")
