@@ -15,12 +15,9 @@ from datetime import datetime
 
 import sys
 sys.path.insert(0, os.path.dirname(__file__))
-from config import EXPERIMENT_CONFIG, set_all_seeds, log_memory
+from config import EXPERIMENT_CONFIG, DATA_DIR, RESULTS_DIR, set_all_seeds, log_memory
 
 set_all_seeds()
-
-DATA_DIR = EXPERIMENT_CONFIG['directories']['data']
-RESULTS_DIR = EXPERIMENT_CONFIG['directories']['results']
 
 
 def load_json(path):
