@@ -43,14 +43,24 @@ echo "$LOG_PREFIX Step 4 complete at $(date)"
 # Memory phase 4-5: statistical significance + random baseline
 # Memory phase 6:   loads link graph for BFS shortest paths, then frees
 # Memory phase 7:   generates HTML report
-echo "$LOG_PREFIX === STEP 5: Validating predictions (stratified + significance + BFS + report) ==="
-python3 "$SCRIPTS_DIR/05_validate.py"
+if is_done "validate"; then
+    echo "Skipping validation (already done)"
+else
+    echo "$LOG_PREFIX === STEP 5: Validating predictions (stratified + significance + BFS + report) ==="
+    python3 "$SCRIPTS_DIR/05_validate.py"
+    mark_done "validate" "Results in ~/data/results/"
+fi
 echo "$LOG_PREFIX Step 5 complete at $(date)"
 
 # Step 6: Visualizations and real-world applications
 # Memory phase: loads results JSONs (lightweight), generates plots + reports
-echo "$LOG_PREFIX === STEP 6: Generating visualizations and applications ==="
-python3 "$SCRIPTS_DIR/06_visualize.py"
+if is_done "visualize"; then
+    echo "Skipping visualizations (already done)"
+else
+    echo "$LOG_PREFIX === STEP 6: Generating visualizations and applications ==="
+    python3 "$SCRIPTS_DIR/06_visualize.py"
+    mark_done "visualize" "Plots and reports generated"
+fi
 echo "$LOG_PREFIX Step 6 complete at $(date)"
 
 # Commit results to git
