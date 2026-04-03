@@ -310,19 +310,19 @@ def generate_blog_examples(confirmed_pairs, n=10):
     Select the most narratively compelling confirmed predictions.
     """
     scored = []
-    for pair in confirmed_pairs:
+    for i, pair in enumerate(confirmed_pairs):
         # Prefer high similarity, recognizable concepts
         narrative_score = pair['similarity']
         if pair.get('cross_domain', False):
             narrative_score += 0.1
-        scored.append((narrative_score, pair))
+        scored.append((narrative_score, i, pair))
 
-    scored.sort(reverse=True)
+    scored.sort(key=lambda x: x[0], reverse=True)
 
     examples = []
     print("\nBLOG-WORTHY CONFIRMED PREDICTIONS:")
     print("(Verify each one manually — check Wikipedia edit history)\n")
-    for score, pair in scored[:n]:
+    for score, _, pair in scored[:n]:
         a_url = pair['entity_a'].replace(' ', '_')
         b_url = pair['entity_b'].replace(' ', '_')
         print(f"  '{pair['entity_a']}' ↔ '{pair['entity_b']}'")
