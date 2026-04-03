@@ -47,14 +47,24 @@ def save_json(data, path):
     print(f"Saved: {path}")
 
 
+def _pair_hash(a, b):
+    """Order-independent hash for a pair of strings."""
+    if a > b:
+        a, b = b, a
+    return hash((a, b))
+
+
 def load_link_set(links_path):
-    """Load link graph JSON as a set of (source, target) lowercase pairs."""
+    """Load link graph JSON as a set of integer hashes (memory-efficient).
+
+    Uses order-independent hashing so (A,B) and (B,A) map to the same int.
+    """
     link_dict = load_json(links_path)
     link_set = set()
     for source, targets in link_dict.items():
+        s = source.lower()
         for target in targets:
-            link_set.add((source.lower(), target.lower()))
-            link_set.add((target.lower(), source.lower()))
+            link_set.add(_pair_hash(s, target.lower()))
     return link_set
 
 
@@ -82,7 +92,7 @@ def is_now_linked(candidate, link_set_2025):
     """Check whether a candidate pair is linked in the 2025 graph."""
     a = candidate['entity_a'].lower()
     b = candidate['entity_b'].lower()
-    return (a, b) in link_set_2025 or (b, a) in link_set_2025
+    return _pair_hash(a, b) in link_set_2025
 
 
 # ---------------------------------------------------------------------------
@@ -254,7 +264,7 @@ def random_baseline(all_entity_titles, link_set_2025,
             b = random.choice(titles)
             if a == b:
                 continue
-            if (a, b) in link_set_2025 or (b, a) in link_set_2025:
+            if _pair_hash(a, b) in link_set_2025:
                 confirmed += 1
         precisions.append(confirmed / n_samples)
 
