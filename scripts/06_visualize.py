@@ -34,6 +34,13 @@ def save_json(data, path):
 #  VISUALIZATION 1: Confidence Ladder
 # ═══════════════════════════════════════════════════════════
 
+def _pair_hash(a, b):
+    """Order-independent hash for a pair of strings."""
+    if a > b:
+        a, b = b, a
+    return hash((a, b))
+
+
 def create_confidence_ladder(candidates, links_2025, random_baseline_precision, output_path):
     """
     Bar chart showing precision at different candidate tiers.
@@ -62,8 +69,7 @@ def create_confidence_ladder(candidates, links_2025, random_baseline_precision, 
             continue
         subset = candidates[:k]
         confirmed = sum(1 for c in subset
-                        if (c['entity_a'].lower(), c['entity_b'].lower()) in links_2025
-                        or (c['entity_b'].lower(), c['entity_a'].lower()) in links_2025)
+                        if _pair_hash(c['entity_a'].lower(), c['entity_b'].lower()) in links_2025)
         p = confirmed / len(subset)
         labels.append(label)
         precisions.append(p)
@@ -360,9 +366,9 @@ def main():
     if os.path.exists(links_path):
         link_dict = load_json(links_path)
         for source, targets in link_dict.items():
+            s = source.lower()
             for target in targets:
-                links_2025.add((source.lower(), target.lower()))
-                links_2025.add((target.lower(), source.lower()))
+                links_2025.add(_pair_hash(s, target.lower()))
 
     random_baseline = validation.get('random_baseline_precision', 0.001)
     create_confidence_ladder(candidates, links_2025, random_baseline,
