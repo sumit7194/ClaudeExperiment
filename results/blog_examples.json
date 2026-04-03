@@ -1,0 +1,102 @@
+[
+  {
+    "entity_a": "The Wire",
+    "entity_b": "The Wire",
+    "similarity": 1.0000003576278687,
+    "entity_a_count": 932,
+    "entity_b_count": 932,
+    "linked_2025": true,
+    "prediction_correct": true,
+    "category": "existing_to_existing"
+  },
+  {
+    "entity_a": "Ferrara",
+    "entity_b": "Ferrara",
+    "similarity": 1.000000238418579,
+    "entity_a_count": 1399,
+    "entity_b_count": 1399,
+    "linked_2025": true,
+    "prediction_correct": true,
+    "category": "existing_to_existing"
+  },
+  {
+    "entity_a": "Plastic surgery",
+    "entity_b": "Plastic surgery",
+    "similarity": 1.000000238418579,
+    "entity_a_count": 1320,
+    "entity_b_count": 1320,
+    "linked_2025": true,
+    "prediction_correct": true,
+    "category": "existing_to_existing"
+  },
+  {
+    "entity_a": "East Midlands",
+    "entity_b": "East Midlands",
+    "similarity": 1.000000238418579,
+    "entity_a_count": 685,
+    "entity_b_count": 685,
+    "linked_2025": true,
+    "prediction_correct": true,
+    "category": "existing_to_existing"
+  },
+  {
+    "entity_a": "National Institute of Standards and Technology",
+    "entity_b": "National Institute of Standards and Technology",
+    "similarity": 1.000000238418579,
+    "entity_a_count": 1446,
+    "entity_b_count": 1446,
+    "linked_2025": true,
+    "prediction_correct": true,
+    "category": "existing_to_existing"
+  },
+  {
+    "entity_a": "Crass",
+    "entity_b": "Crass",
+    "similarity": 1.000000238418579,
+    "entity_a_count": 306,
+    "entity_b_count": 306,
+    "linked_2025": true,
+    "prediction_correct": true,
+    "category": "existing_to_existing"
+  },
+  {
+    "entity_a": "Downburst",
+    "entity_b": "Downburst",
+    "similarity": 1.000000238418579,
+    "entity_a_count": 161,
+    "entity_b_count": 161,
+    "linked_2025": true,
+    "prediction_correct": true,
+    "category": "existing_to_existing"
+  },
+  {
+    "entity_a": "U.S. Route 20 in New York",
+    "entity_b": "U.S. Route 20 in New York",
+    "similarity": 1.000000238418579,
+    "entity_a_count": 386,
+    "entity_b_count": 386,
+    "linked_2025": true,
+    "prediction_correct": true,
+    "category": "existing_to_existing"
+  },
+  {
+    "entity_a": "Sangli",
+    "entity_b": "Sangli",
+    "similarity": 1.000000238418579,
+    "entity_a_count": 201,
+    "entity_b_count": 201,
+    "linked_2025": true,
+    "prediction_correct": true,
+    "category": "existing_to_existing"
+  },
+  {
+    "entity_a": "Gloria Trevi",
+    "entity_b": "Gloria Trevi",
+    "similarity": 1.000000238418579,
+    "entity_a_count": 159,
+    "entity_b_count": 159,
+    "linked_2025": true,
+    "prediction_correct": true,
+    "category": "existing_to_existing"
+  }
+]
