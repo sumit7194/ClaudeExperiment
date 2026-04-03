@@ -1,0 +1,80 @@
+{
+  "config": {
+    "experiment_name": "temporal-knowledge-gap-finder",
+    "run_id": null,
+    "random_seed": 42,
+    "dumps": {
+      "2015": {
+        "url": "https://dumps.wikimedia.org/enwiki/20150901/enwiki-20150901-pages-articles.xml.bz2",
+        "sha256": null
+      },
+      "2025": {
+        "url": "https://dumps.wikimedia.org/enwiki/20251220/enwiki-20251220-pages-articles.xml.bz2",
+        "sha256": null
+      }
+    },
+    "training": {
+      "dim_size": 300,
+      "window": 10,
+      "iteration": 10,
+      "negative": 15,
+      "min_entity_count": 5,
+      "lowercase": true,
+      "pool_size": 4
+    },
+    "analysis": {
+      "sample_size": 30000,
+      "top_k_neighbors": 50,
+      "n_clusters": 20,
+      "shortest_path_max_depth": 4,
+      "shortest_path_top_n": 1000,
+      "precision_k_values": [
+        10,
+        50,
+        100,
+        500,
+        1000,
+        5000,
+        10000
+      ],
+      "similarity_thresholds": [
+        0.5,
+        0.55,
+        0.6,
+        0.65,
+        0.7,
+        0.75,
+        0.8,
+        0.85,
+        0.9
+      ],
+      "random_baseline_trials": 20,
+      "random_baseline_samples": 10000,
+      "min_entity_name_length": 3,
+      "save_interval_entities": 1000,
+      "save_interval_articles": 50000
+    },
+    "confidence_weights": {
+      "cosine_similarity": 0.4,
+      "neighbor_overlap": 0.25,
+      "cross_domain": 0.15,
+      "entity_frequency_sweetspot": 0.2
+    }
+  },
+  "environment": {
+    "python_version": "3.10.12 (main, Mar  3 2026, 11:56:32) [GCC 11.4.0]",
+    "platform": "Linux-6.8.0-1052-gcp-x86_64-with-glibc2.35",
+    "cpu_count": 12,
+    "packages": {
+      "tqdm": "4.67.3",
+      "gensim": "4.4.0",
+      "matplotlib": "3.10.8",
+      "networkx": "3.4.2",
+      "numpy": "2.2.6",
+      "wikipedia2vec": "2.0.0",
+      "scipy": "1.15.3",
+      "scikit-learn": "1.7.2"
+    }
+  },
+  "timestamp_start": "2026-04-03T04:52:34.813019"
+}

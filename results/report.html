@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html><head>
+<meta charset="utf-8">
+<title>Temporal Knowledge Gap Finder - Results</title>
+<style>
+  body { font-family: Georgia, serif; max-width: 960px; margin: 40px auto;
+         color: #2d2d2d; line-height: 1.7; padding: 0 20px; }
+  h1 { border-bottom: 3px solid #333; padding-bottom: 10px; }
+  h2 { margin-top: 40px; color: #1a1a1a; }
+  .metric { font-size: 2em; font-weight: bold; color: #1a73e8; }
+  .card { background: #f8f9fa; border-radius: 8px; padding: 20px;
+           margin: 16px 0; border-left: 4px solid #1a73e8; }
+  .card-red { border-left-color: #c5221f; }
+  .card-green { border-left-color: #0d904f; }
+  table { border-collapse: collapse; width: 100%; margin: 12px 0; }
+  th, td { border: 1px solid #ddd; padding: 8px 12px; text-align: left; }
+  th { background: #f0f0f0; }
+  .confirmed { color: #0d904f; font-weight: bold; }
+  .prediction { color: #c5221f; }
+  pre { background: #f4f4f4; padding: 16px; border-radius: 6px;
+         overflow-x: auto; font-size: 0.85em; }
+  .two-col { display: flex; gap: 20px; }
+  .two-col > .card { flex: 1; }
+</style>
+</head><body>
+
+<h1>Temporal Knowledge Gap Finder</h1>
+<p><em>Generated: 2026-04-03 04:26</em></p>
+
+<h2>Key Results</h2>
+<div class="two-col">
+  <div class="card card-green">
+    <div class="metric">2.6%</div>
+    <p><strong>Pure precision</strong> &mdash; both articles existed in 2015, new link appeared by 2025.<br>
+    23163 confirmed out of 899842 predictions.</p>
+  </div>
+  <div class="card">
+    <div class="metric">2.0%</div>
+    <p><strong>Overall precision</strong> &mdash; all categories combined.<br>
+    23164 confirmed out of 1148971 predictions.</p>
+  </div>
+</div>
+
+<h2>Statistical Significance</h2>
+<div class="card card-green">
+  <p>Significant at 0.1% level: <span class="confirmed">YES</span></p>
+  <table>
+    <tr><td>Embedding precision</td><td>0.025741</td></tr>
+    <tr><td>Random baseline</td><td>0.000005 &plusmn; 0.000022</td></tr>
+    <tr><td>Z-score</td><td>5280.95</td></tr>
+    <tr><td>P-value (z-test)</td><td>0.00e+00</td></tr>
+    <tr><td>P-value (binomial)</td><td>0.00e+00</td></tr>
+    <tr><td>Effect size (Cohen's h)</td><td>0.318 (small)</td></tr>
+  </table>
+</div>
+
+<h2>Validation Breakdown by Category</h2>
+<table>
+  <tr><th>Category</th><th>Predictions</th><th>Confirmed</th><th>Precision</th></tr>
+  <tr><td>existing_to_existing</td><td>899842</td><td>23163</td><td>0.0257</td></tr>
+<tr><td>involves_new_article</td><td>1</td><td>1</td><td>1.0000</td></tr>
+<tr><td>involves_missing</td><td>249128</td><td>0</td><td>0.0000</td></tr>
+
+</table>
+
+<h2>Precision at Multiple Similarity Thresholds</h2>
+<table>
+  <tr><th>Threshold</th><th>Candidates</th><th>Confirmed</th><th>Precision</th></tr>
+  <tr><td>0.50</td><td>1100534</td><td>21465</td><td>0.0195</td></tr>
+<tr><td>0.55</td><td>1014996</td><td>18258</td><td>0.0180</td></tr>
+<tr><td>0.60</td><td>891029</td><td>13838</td><td>0.0155</td></tr>
+<tr><td>0.65</td><td>739486</td><td>9911</td><td>0.0134</td></tr>
+<tr><td>0.70</td><td>567436</td><td>6784</td><td>0.0120</td></tr>
+<tr><td>0.75</td><td>389330</td><td>4287</td><td>0.0110</td></tr>
+<tr><td>0.80</td><td>232135</td><td>2576</td><td>0.0111</td></tr>
+<tr><td>0.85</td><td>116967</td><td>1518</td><td>0.0130</td></tr>
+<tr><td>0.90</td><td>53574</td><td>1031</td><td>0.0192</td></tr>
+
+</table>
+
+<h2>Shortest Path Distribution (Top Candidates)</h2>
+<table>
+  <tr><th>Path Length</th><th>Count</th></tr>
+  <tr><td>0</td><td>1000</td></tr>
+
+</table>
+
+<h2>Top 30 Confirmed Predictions (2015 to 2025)</h2>
+<table>
+  <tr><th>Entity A</th><th>Entity B</th><th>Similarity</th><th>Category</th><th>Path (2015)</th></tr>
+  <tr><td>The Wire</td><td>The Wire</td><td>1.000</td><td>existing_to_existing</td><td>0</td></tr>
+<tr><td>Ferrara</td><td>Ferrara</td><td>1.000</td><td>existing_to_existing</td><td>0</td></tr>
+<tr><td>Plastic surgery</td><td>Plastic surgery</td><td>1.000</td><td>existing_to_existing</td><td>0</td></tr>
+<tr><td>East Midlands</td><td>East Midlands</td><td>1.000</td><td>existing_to_existing</td><td>0</td></tr>
+<tr><td>National Institute of Standards and Technology</td><td>National Institute of Standards and Technology</td><td>1.000</td><td>existing_to_existing</td><td>0</td></tr>
+<tr><td>Crass</td><td>Crass</td><td>1.000</td><td>existing_to_existing</td><td>0</td></tr>
+<tr><td>Downburst</td><td>Downburst</td><td>1.000</td><td>existing_to_existing</td><td>0</td></tr>
+<tr><td>U.S. Route 20 in New York</td><td>U.S. Route 20 in New York</td><td>1.000</td><td>existing_to_existing</td><td>0</td></tr>
+<tr><td>Sangli</td><td>Sangli</td><td>1.000</td><td>existing_to_existing</td><td>0</td></tr>
+<tr><td>Gloria Trevi</td><td>Gloria Trevi</td><td>1.000</td><td>existing_to_existing</td><td>0</td></tr>
+<tr><td>Landon Pigg</td><td>Landon Pigg</td><td>1.000</td><td>existing_to_existing</td><td>0</td></tr>
+<tr><td>Israeli Labor Party</td><td>Israeli Labor Party</td><td>1.000</td><td>existing_to_existing</td><td>0</td></tr>
+<tr><td>Italian Fascism</td><td>Italian Fascism</td><td>1.000</td><td>existing_to_existing</td><td>0</td></tr>
+<tr><td>Wiley-Blackwell</td><td>Wiley-Blackwell</td><td>1.000</td><td>existing_to_existing</td><td>0</td></tr>
+<tr><td>Cambridge University Cricket Club</td><td>Cambridge University Cricket Club</td><td>1.000</td><td>existing_to_existing</td><td>0</td></tr>
+<tr><td>Tobacco</td><td>Tobacco</td><td>1.000</td><td>existing_to_existing</td><td>0</td></tr>
+<tr><td>Spotify</td><td>Spotify</td><td>1.000</td><td>existing_to_existing</td><td>0</td></tr>
+<tr><td>Arianism</td><td>Arianism</td><td>1.000</td><td>existing_to_existing</td><td>0</td></tr>
+<tr><td>Tierra del Fuego</td><td>Tierra del Fuego</td><td>1.000</td><td>existing_to_existing</td><td>0</td></tr>
+<tr><td>NOFX</td><td>NOFX</td><td>1.000</td><td>existing_to_existing</td><td>0</td></tr>
+<tr><td>Ranchi</td><td>Ranchi</td><td>1.000</td><td>existing_to_existing</td><td>0</td></tr>
+<tr><td>Rugby, Warwickshire</td><td>Rugby, Warwickshire</td><td>1.000</td><td>existing_to_existing</td><td>0</td></tr>
+<tr><td>Irvine, California</td><td>Irvine, California</td><td>1.000</td><td>existing_to_existing</td><td>0</td></tr>
+<tr><td>Seal (emblem)</td><td>Seal (emblem)</td><td>1.000</td><td>existing_to_existing</td><td>0</td></tr>
+<tr><td>Port Adelaide Football Club</td><td>Port Adelaide Football Club</td><td>1.000</td><td>existing_to_existing</td><td>0</td></tr>
+<tr><td>Federal Emergency Management Agency</td><td>Federal Emergency Management Agency</td><td>1.000</td><td>existing_to_existing</td><td>0</td></tr>
+<tr><td>Korean War</td><td>Korean War</td><td>1.000</td><td>existing_to_existing</td><td>0</td></tr>
+<tr><td>Bantam Books</td><td>Bantam Books</td><td>1.000</td><td>existing_to_existing</td><td>0</td></tr>
+<tr><td>Royal College, Colombo</td><td>Royal College, Colombo</td><td>1.000</td><td>existing_to_existing</td><td>0</td></tr>
+<tr><td>Lviv</td><td>Lviv</td><td>1.000</td><td>existing_to_existing</td><td>0</td></tr>
+
+</table>
+
+<h2>Methodology &amp; Reproducibility</h2>
+<pre>{
+  "experiment_name": "temporal-knowledge-gap-finder",
+  "run_id": null,
+  "random_seed": 42,
+  "dumps": {
+    "2015": {
+      "url": "https://dumps.wikimedia.org/enwiki/20150901/enwiki-20150901-pages-articles.xml.bz2",
+      "sha256": null
+    },
+    "2025": {
+      "url": "https://dumps.wikimedia.org/enwiki/20251220/enwiki-20251220-pages-articles.xml.bz2",
+      "sha256": null
+    }
+  },
+  "training": {
+    "dim_size": 300,
+    "window": 10,
+    "iteration": 10,
+    "negative": 15,
+    "min_entity_count": 5,
+    "lowercase": true,
+    "pool_size": 4
+  },
+  "analysis": {
+    "sample_size": 30000,
+    "top_k_neighbors": 50,
+    "n_clusters": 20,
+    "shortest_path_max_depth": 4,
+    "shortest_path_top_n": 1000,
+    "precision_k_values": [
+      10,
+      50,
+      100,
+      500,
+      1000,
+      5000,
+      10000
+    ],
+    "similarity_thresholds": [
+      0.5,
+      0.55,
+      0.6,
+      0.65,
+      0.7,
+      0.75,
+      0.8,
+      0.85,
+      0.9
+    ],
+    "random_baseline_trials": 20,
+    "random_baseline_samples": 10000,
+    "min_entity_name_length": 3,
+    "save_interval_entities": 1000,
+    "save_interval_articles": 50000
+  },
+  "confidence_weights": {
+    "cosine_similarity": 0.4,
+    "neighbor_overlap": 0.25,
+    "cross_domain": 0.15,
+    "entity_frequency_sweetspot": 0.2
+  }
+}</pre>
+
+</body></html>

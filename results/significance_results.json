@@ -1,0 +1,14 @@
+{
+  "embedding_precision": 0.025741185674818468,
+  "random_mean": 5e-06,
+  "random_std": 2.179449471770337e-05,
+  "z_score": 5280.95387352156,
+  "p_value_z": 0.0,
+  "p_value_binom": 0.0,
+  "effect_size_h": 0.3178018963323366,
+  "effect_interpretation": "small",
+  "significant_at_001": true,
+  "significant_at_005": true,
+  "n_predictions": 899842,
+  "n_confirmed": 23163
+}

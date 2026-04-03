@@ -1,0 +1,27 @@
+{
+  "high_freq": {
+    "range": "0-22152",
+    "tier_size": 22152,
+    "sampled": 6000
+  },
+  "upper_mid": {
+    "range": "22152-110763",
+    "tier_size": 88611,
+    "sampled": 6000
+  },
+  "mid_freq": {
+    "range": "110763-443053",
+    "tier_size": 332290,
+    "sampled": 6000
+  },
+  "lower_mid": {
+    "range": "443053-1107632",
+    "tier_size": 664579,
+    "sampled": 6000
+  },
+  "long_tail": {
+    "range": "1107632-2215265",
+    "tier_size": 1107633,
+    "sampled": 6000
+  }
+}

@@ -1,0 +1,56 @@
+[
+  {
+    "threshold": 0.5,
+    "n_candidates": 1100534,
+    "confirmed": 21465,
+    "precision": 0.019504167976636795
+  },
+  {
+    "threshold": 0.55,
+    "n_candidates": 1014996,
+    "confirmed": 18258,
+    "precision": 0.017988248229549673
+  },
+  {
+    "threshold": 0.6,
+    "n_candidates": 891029,
+    "confirmed": 13838,
+    "precision": 0.015530358720086552
+  },
+  {
+    "threshold": 0.65,
+    "n_candidates": 739486,
+    "confirmed": 9911,
+    "precision": 0.013402552583821736
+  },
+  {
+    "threshold": 0.7,
+    "n_candidates": 567436,
+    "confirmed": 6784,
+    "precision": 0.011955533311245674
+  },
+  {
+    "threshold": 0.75,
+    "n_candidates": 389330,
+    "confirmed": 4287,
+    "precision": 0.011011224411167904
+  },
+  {
+    "threshold": 0.8,
+    "n_candidates": 232135,
+    "confirmed": 2576,
+    "precision": 0.011096990975079157
+  },
+  {
+    "threshold": 0.85,
+    "n_candidates": 116967,
+    "confirmed": 1518,
+    "precision": 0.012978019441380903
+  },
+  {
+    "threshold": 0.9,
+    "n_candidates": 53574,
+    "confirmed": 1031,
+    "precision": 0.019244409601672452
+  }
+]
