@@ -5,12 +5,14 @@
   "private": true,
   "type": "module",
   "bin": {
-    "claude-bridge-mcp": "./dist/main.js"
+    "claude-bridge-mcp": "./dist/main.js",
+    "claude-bridge-mcp-http": "./dist/main-http.js"
   },
   "scripts": {
     "build": "tsc",
     "dev": "tsc --watch",
     "start": "node dist/main.js",
+    "start:http": "node dist/main-http.js",
     "typecheck": "tsc --noEmit"
   },
   "engines": {

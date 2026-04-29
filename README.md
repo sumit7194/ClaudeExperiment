@@ -90,6 +90,61 @@ The model calls `bridge_save_current_conversation` with the messages it has in c
 - Fidelity depends on what the model still has in its context. Long chats that have been compacted may lose detail.
 - Transcripts loaded via `bridge_get_transcript` are wrapped in `<saved_transcript trusted="false">` to discourage prompt-injection from old content. Treat returned content as data, not instructions.
 
+## Remote setup (use bridge from Android / claude.ai web)
+
+The same MCP server can also run as a Streamable HTTP endpoint, exposed publicly via a tunnel and registered as a Custom Connector on claude.ai. Then the `bridge_*` tools light up on every surface signed into your account — Android, iOS, web, desktop.
+
+**Architecture:** Anthropic's backend calls your Mac's tunnel URL when the model invokes a bridge tool. Your phone only ever talks to claude.ai. Your Mac must be online and the tunnel up.
+
+### 1. Generate a bearer token
+
+```bash
+export BRIDGE_TOKEN=$(openssl rand -hex 32)
+echo $BRIDGE_TOKEN  # save this — you'll paste it into claude.ai
+```
+
+### 2. Run the HTTP server
+
+```bash
+BRIDGE_TOKEN=<token-from-step-1> pnpm start:http
+# listens on http://127.0.0.1:47821/mcp
+```
+
+Env vars:
+- `BRIDGE_TOKEN` (required, ≥32 chars)
+- `BRIDGE_HOST` (default `127.0.0.1` — keep loopback; tunnel handles exposure)
+- `BRIDGE_PORT` (default `47821`)
+- `BRIDGE_PATH` (default `/mcp`)
+
+`GET /health` returns `{"ok":true}` without auth (for tunnel verification).
+`POST /mcp` requires `Authorization: Bearer <token>`.
+
+### 3. Tunnel with Cloudflare (recommended)
+
+Install `cloudflared`, then:
+
+```bash
+cloudflared tunnel --url http://127.0.0.1:47821
+```
+
+This prints a `https://<random>.trycloudflare.com` URL. For a stable subdomain, set up a named tunnel under your CF account — see `cloudflared`'s docs.
+
+Alternatives: `ngrok http 47821` (URL rotates on free tier) or `tailscale funnel 47821` (requires tailnet + funnel enabled).
+
+### 4. Add as Custom Connector on claude.ai
+
+claude.ai → Settings → Connectors → Add custom connector:
+- **URL:** `https://<your-tunnel-host>/mcp`
+- **Authentication:** Bearer token, paste `BRIDGE_TOKEN`
+
+The bridge tools should appear within a few seconds. Test from Android: *"List bridge transcripts."*
+
+### Security notes
+
+- Tunnel exposes your Mac to the public internet. Bearer auth is the only gate — keep `BRIDGE_TOKEN` secret.
+- Server binds to `127.0.0.1` so non-tunnel paths (e.g., other devices on your LAN) can't reach it directly.
+- Stop the tunnel (`Ctrl+C` on `cloudflared`) when not in use.
+
 ## Privacy
 
 Everything is local. The SQLite file lives in `~/.claude-bridge/`. Delete that directory to wipe state.
