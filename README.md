@@ -8,6 +8,42 @@ Both surfaces speak to the same SQLite-backed store. Saves are triggered by aski
 
 v0.1 scaffold. Not yet wired up. See `claudebridgeplan.md` for the full original spec; the implementation here is scoped to the simplified MCP-only design (no daemon, no browser extension, no CLI).
 
+## Quickstart (Mac)
+
+Run these once you've cloned the repo on your Mac. Detailed explanations follow in the sections below.
+
+```bash
+# 1. Install + build
+pnpm install
+pnpm build
+
+# 2. Wire up Claude Desktop (and Claude Code) — stdio
+#    Edit ~/Library/Application Support/Claude/claude_desktop_config.json
+#    See "Configure Claude Desktop" below for the JSON block.
+#    Restart the desktop app.
+
+# 3. Generate a bearer token for the remote/HTTP path (only needed for Android / web)
+export BRIDGE_TOKEN=$(openssl rand -hex 32)
+echo "$BRIDGE_TOKEN"   # save this; you'll paste it into claude.ai
+
+# 4. Start the HTTP server (terminal A)
+BRIDGE_TOKEN=$BRIDGE_TOKEN pnpm start:http
+
+# 5. Start the tunnel (terminal B)
+cloudflared tunnel --url http://127.0.0.1:47821
+# copy the printed https://<random>.trycloudflare.com URL
+
+# 6. Register on claude.ai
+#    Settings → Connectors → Add custom connector
+#    URL: https://<random>.trycloudflare.com/mcp
+#    Auth: Bearer, paste $BRIDGE_TOKEN
+
+# 7. Test from Android
+#    Open the Claude app, say: "list bridge transcripts"
+```
+
+Steps 1–2 alone are enough for desktop + Code. Steps 3–7 add Android / web / iOS access via Custom Connector.
+
 ## Layout
 
 ```
