@@ -1,0 +1,30 @@
+{
+  "name": "claude-bridge",
+  "version": "0.1.0",
+  "description": "Local MCP server that shares full conversation transcripts between Claude Desktop and Claude Code on macOS.",
+  "private": true,
+  "type": "module",
+  "bin": {
+    "claude-bridge-mcp": "./dist/main.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "start": "node dist/main.js",
+    "typecheck": "tsc --noEmit"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.0",
+    "better-sqlite3": "^11.3.0",
+    "ulid": "^2.3.0",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/better-sqlite3": "^7.6.11",
+    "@types/node": "^20.14.0",
+    "typescript": "^5.5.0"
+  }
+}
